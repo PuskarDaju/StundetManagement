@@ -1,0 +1,43 @@
+﻿body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6C63FF, #00BFFF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.welcome-container {
+    text-align: center;
+    max-width: 700px;
+}
+
+.welcome-container h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.welcome-container p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.btn-start {
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #6C63FF;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-start:hover {
+    background-color: #6C63FF;
+    color: #fff;
+}
