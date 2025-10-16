@@ -1,11 +1,19 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StudentManagement.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // ✅ 1. Add MVC services
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+var connectionString = "server=127.0.0.1;port=8889;database=studentdb;user=root;password=root";
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+);
 
 var app = builder.Build();
 
@@ -18,7 +26,6 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseRouting();
 
-// ✅ 3. Map default route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

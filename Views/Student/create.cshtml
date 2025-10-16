@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"]="Create Student";
+}
+<form method="post" action="/student/insert" id="st_form">
+    <label>Full Name</label>
+    <input type="text" id="name" name="name"/>
+    <br/>
+    <label>Age</label>
+    <input type="number" id="age" name="age"/>
+    <br/>
+    <label>Email</label>
+    <input type="email" id="email" name="email"/>
+    <br/>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+$(document).ready(function() {
+    $("#st_form").submit(function(e) {
+        e.preventDefault(); // prevent normal form submission
+
+        const data = {
+            name: $("#name").val(),
+            age: $("#age").val(),
+            email: $("#email").val()
+        };
+
+        $.ajax({
+            url: "/student/insert",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function(response) {
+                alert("Student added successfully!");
+                // Optionally, clear the form
+                $("#st_form")[0].reset();
+            },
+            error: function(xhr, status, error) {
+                alert("Error: " + error);
+            }
+        });
+    });
+});
+</script>

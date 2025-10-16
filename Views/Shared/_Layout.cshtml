@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Student Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0078D7;
+            color: white;
+            padding: 15px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            display: inline-block;
+        }
+
+        nav {
+            display: inline-block;
+            margin-left: 30px;
+        }
+
+        nav span {
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Student Management</h1>
+    <nav>
+        <span>Home</span>
+        <span>Students</span>
+        <span>Teachers</span>
+        <span>About</span>
+    </nav>
+</header>
+
+<main>
+    @RenderBody()
+</main>
+
+<footer>
+    &copy; @DateTime.Now.Year - Student Management
+</footer>
+
+@RenderSection("Scripts", required: false)
+</body>
+</html>
