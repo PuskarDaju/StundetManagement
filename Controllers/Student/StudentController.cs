@@ -11,7 +11,8 @@ public class StudentController(ApplicationDbContext context) : Controller
 
    public IActionResult Index()
    {
-      return View();
+      var students = _context.Students.ToList();
+      return View(students);
    }
 
    public IActionResult Create()
@@ -27,10 +28,6 @@ public class StudentController(ApplicationDbContext context) : Controller
       int age = data.GetProperty("age").GetInt32();
       string email = data.GetProperty("email").GetString() ?? "";
 
-      // Here you can insert into DB if needed
-      // _context.Students.Add(new Student { Name=name, Age=age, Email=email });
-      // await _context.SaveChangesAsync();
-
       return Json(new
       {
          success = true,
@@ -38,5 +35,17 @@ public class StudentController(ApplicationDbContext context) : Controller
          Email = email,
          Age = age
       });
+   }
+
+   [HttpGet]
+   public IActionResult Edit(int id)
+   {
+      Student student = _context.Find<Student>(id);
+      if (student == null)
+      {
+        return NotFound();
+      }
+      return View(student);
+
    }
 }

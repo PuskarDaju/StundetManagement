@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // ✅ 1. Add MVC services
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-var connectionString = "server=127.0.0.1;port=8889;database=studentdb;user=root;password=root";
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))

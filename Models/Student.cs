@@ -1,10 +1,20 @@
 // ReSharper disable once CheckNamespace
+
+using System.ComponentModel.DataAnnotations;
+
 namespace StudentManagement.Models;
 
 public class Student
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = "";
-    public int Age { get; set; }
-    public string Email { get; set; } = "";
+    [Key]
+    public int student_id { get; set; }
+
+    [Required]
+    public string name { get; set; }
+
+    [Range(1, 120)]
+    public int age { get; set; }
+
+    [Required, EmailAddress]
+    public string email { get; set; }
 }
