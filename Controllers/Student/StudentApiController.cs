@@ -1,17 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using StudentManagement.Data;
 
 namespace StudentManagement.Web.Controllers.Student
 {
     [ApiController]
     [Route("student-api")]
-    public class StudentApiController(ApplicationDbContext context):Controller
+    public class StudentApiController(ApplicationDbContext context):ControllerBase
     {
+       
         private readonly ApplicationDbContext _context = context;
 
         [HttpPost]
         [Route("insert")]
-        public IActionResult Insert([FromBody] Models.Student student)
+        public IActionResult Insert(Models.Student student)
         {
             if (!ModelState.IsValid)
             {
@@ -33,18 +35,40 @@ namespace StudentManagement.Web.Controllers.Student
                 return NotFound();
             }
 
-// Update only the fields that the user can change
             st.name = student.name;
-            st.age = student.age;
             st.email = student.email;
+            st.age = student.age;
+            
+           _context.Update(st);
+           if (_context.SaveChanges() > 0)
+           {
+               return Ok(st);
+           }
 
-            _context.SaveChanges(); // persist changes
+            return BadRequest(new
+            {
+                Status = "Error",
+                message = "Student cannot be updated"
+            });
+        }
 
+        [HttpDelete("delete/{id:int}")]
+        public IActionResult Delete(int id)
+        {
+            Models.Student st = _context.Students.Find(id);
+            if (st == null)
+            {
+                return NotFound();
+            }
+            
+            _context.Remove(st);
+            _context.SaveChanges();
             return Ok(new
             {
                 Status = "success",
-                message = "Student updated successfully"
-            });
+                message = "Student deleted successfully"
+            }); 
         }
+        
     }
 }

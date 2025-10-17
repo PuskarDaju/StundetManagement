@@ -61,7 +61,7 @@
                                     text: response.message,
                                     icon: 'success'
                                 });
-                                $("#st_form")[0].reset();
+                               window.location("/student")
                             },
                             error: function(xhr, status, error) {
                                 let errMsg = xhr.responseJSON?.message || error || "Something went wrong!";
