@@ -37,8 +37,6 @@
                     age: $("#age").val(),
                     email: $("#email").val()
                 };
-
-                // Show confirmation before submitting
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "Do you want to submit this student?",
@@ -49,7 +47,6 @@
                     confirmButtonText: 'Yes, submit!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // Submit via AJAX
                         $.ajax({
                             url: "/student-api/insert",
                             type: "POST",
@@ -60,8 +57,10 @@
                                     title: 'Success!',
                                     text: response.message,
                                     icon: 'success'
+                                }).then(()=>{
+                                    window.location.href = "/student";
                                 });
-                               window.location("/student")
+                              
                             },
                             error: function(xhr, status, error) {
                                 let errMsg = xhr.responseJSON?.message || error || "Something went wrong!";

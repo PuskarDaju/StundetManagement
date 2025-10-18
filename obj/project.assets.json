@@ -2914,19 +2914,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/puskar/.nuget/packages/": {}
+    "C:\\Users\\puska\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/puskar/project/Dot_Net/StundetManagement/StudentManagement.csproj",
+      "projectUniqueName": "C:\\Users\\puska\\RiderProjects\\ERPStuentModel\\ERPStuentModel\\StudentManagement.csproj",
       "projectName": "StudentManagement",
-      "projectPath": "/Users/puskar/project/Dot_Net/StundetManagement/StudentManagement.csproj",
-      "packagesPath": "/Users/puskar/.nuget/packages/",
-      "outputPath": "/Users/puskar/project/Dot_Net/StundetManagement/obj/",
+      "projectPath": "C:\\Users\\puska\\RiderProjects\\ERPStuentModel\\ERPStuentModel\\StudentManagement.csproj",
+      "packagesPath": "C:\\Users\\puska\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\puska\\RiderProjects\\ERPStuentModel\\ERPStuentModel\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/puskar/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\puska\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -2990,7 +2990,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

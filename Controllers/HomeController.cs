@@ -10,5 +10,10 @@ namespace StudentManagement.Web.Controllers
             ViewBag.Message = "Welcome to Student Management System!";
             return View("Welcome"); 
         }
+
+        public IActionResult About()
+        {
+            return View("AboutUs");
+        }
     }
 }
